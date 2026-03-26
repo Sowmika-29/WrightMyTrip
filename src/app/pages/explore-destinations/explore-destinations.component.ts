@@ -51,7 +51,6 @@ import { FooterComponent } from '../../components/footer/footer.component';
       </div>
     </main>
 
-    <app-footer></app-footer>
   `
 })
 export class ExploreDestinationsComponent implements OnInit {
