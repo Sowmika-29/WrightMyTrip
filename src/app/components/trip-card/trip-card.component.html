@@ -1,0 +1,38 @@
+<div [routerLink]="['/trip', trip.id]" 
+     class="group relative bg-[#111111] border border-white/5 rounded-2xl overflow-hidden cursor-pointer hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
+  
+  <!-- Image Container -->
+  <div class="relative h-64 overflow-hidden">
+    <img [src]="trip.image" [alt]="trip.name" 
+         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <!-- Price Badge -->
+    <div class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-primary/30 z-10 transition-transform group-hover:scale-105">
+      <span class="text-xs text-gray-400 block leading-none">Starting at</span>
+      <span class="text-primary font-bold text-lg">₹{{ startingPrice }}</span>
+    </div>
+
+    <!-- Hover Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 space-y-3">
+    <div class="flex justify-between items-start">
+      <div>
+        <span class="text-[10px] tracking-widest uppercase text-primary font-bold">{{ trip.type }}</span>
+        <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">{{ trip.name }}</h3>
+      </div>
+    </div>
+    
+    <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed">
+      {{ trip.description }}
+    </p>
+
+    <!-- CTA -->
+    <div class="pt-4 flex items-center text-sm font-bold text-primary group-hover:translate-x-2 transition-transform">
+      VIEW DETAILS 
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </div>
+  </div>
+</div>

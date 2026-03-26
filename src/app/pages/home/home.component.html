@@ -1,0 +1,95 @@
+<app-hero></app-hero>
+
+<!-- Domestic Trips Section -->
+<section id="trips" class="py-24 bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+      <div class="space-y-4">
+        <h2 class="text-4xl font-bold tracking-tight">Domestic <span class="text-primary">Wonders</span></h2>
+        <p class="text-gray-400 max-w-xl">Explore the diverse landscapes and rich heritage of India with our curated domestic packages.</p>
+      </div>
+      <a routerLink="/domestic" class="text-primary font-bold hover:underline underline-offset-8 transition-all hidden md:block">VIEW ALL DOMESTIC TRIPS →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <app-trip-card *ngFor="let trip of domesticTrips" [trip]="trip"></app-trip-card>
+    </div>
+  </div>
+</section>
+
+<!-- International Trips Section -->
+<section class="py-24 bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+      <div class="space-y-4">
+        <h2 class="text-4xl font-bold tracking-tight">International <span class="text-primary">Escapes</span></h2>
+        <p class="text-gray-400 max-w-xl">From futuristic cities to tropical paradises, explore the world's most iconic destinations.</p>
+      </div>
+      <a routerLink="/international" class="text-primary font-bold hover:underline underline-offset-8 transition-all hidden md:block">VIEW ALL INTERNATIONAL TRIPS →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <app-trip-card *ngFor="let trip of internationalTrips" [trip]="trip"></app-trip-card>
+    </div>
+  </div>
+</section>
+
+<!-- Offers Section -->
+<section class="py-24 bg-black border-y border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+    <h2 class="text-4xl font-bold mb-4">Exclusive <span class="text-primary">Offers</span></h2>
+    <p class="text-gray-400">Unlock special discounts and curated experiences for your next journey.</p>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div *ngFor="let offer of offers" 
+         class="group p-10 bg-[#111111] border border-white/5 rounded-3xl hover:border-primary/40 transition-all duration-500 text-center">
+      <div class="text-5xl mb-6 grayscale group-hover:grayscale-0 transition-all transform group-hover:scale-110">{{ offer.icon }}</div>
+      <h3 class="text-2xl font-bold mb-2">{{ offer.title }}</h3>
+      <div class="text-primary font-black text-3xl mb-4">{{ offer.discount }}</div>
+      <p class="text-gray-400 text-sm leading-relaxed mb-8">{{ offer.description }}</p>
+      <button class="w-full py-4 border border-white/10 rounded-full font-bold group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all">
+        CLAIM NOW
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="py-24 bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+    <h2 class="text-4xl font-bold mb-4">Customer <span class="text-primary">Stories</span></h2>
+    <p class="text-gray-400">Join thousands of happy travelers who trust Wright My Trip.</p>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div *ngFor="let review of reviews" 
+         class="p-8 bg-black/40 backdrop-blur-sm border border-white/5 rounded-2xl relative">
+      <div class="flex text-primary mb-4">
+        <span *ngFor="let s of [1,2,3,4,5]" class="text-lg">★</span>
+      </div>
+      <p class="text-gray-300 italic leading-relaxed mb-6">"{{ review.feedback }}"</p>
+      <div class="flex items-center">
+        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold mr-3">
+          {{ review.name[0] }}
+        </div>
+        <div>
+          <h4 class="font-bold text-white">{{ review.name }}</h4>
+          <span class="text-xs text-gray-500">Verified Traveler</span>
+        </div>
+      </div>
+      <div class="absolute -top-4 -right-4 text-6xl text-white/5 font-serif italic">"</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-4xl md:text-5xl font-black text-black mb-6">Ready to write your next adventure?</h2>
+    <p class="text-black/70 text-lg mb-10 max-w-2xl mx-auto font-medium">Get a custom itinerary designed by our travel experts today.</p>
+    <button routerLink="/contact" class="px-12 py-5 bg-black text-white font-bold rounded-full hover:bg-white hover:text-black transition-all transform hover:scale-105 shadow-xl">
+      GET STARTED NOW
+    </button>
+  </div>
+</section>

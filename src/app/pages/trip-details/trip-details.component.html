@@ -1,0 +1,135 @@
+<div *ngIf="trip" class="bg-black text-white min-h-screen">
+  <!-- Header Banner -->
+  <div class="relative h-[60vh] w-full overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10"></div>
+    <img [src]="trip.image" [alt]="trip.name" class="w-full h-full object-cover">
+    
+    <div class="absolute bottom-20 left-0 w-full z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-primary font-bold tracking-[0.3em] uppercase mb-4 block animate-in fade-in slide-in-from-bottom duration-700">
+          {{ trip.tagline }}
+        </span>
+        <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom duration-1000">
+          {{ trip.name }}
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+      
+      <!-- Left Column: Details & Itinerary -->
+      <div class="lg:col-span-2 space-y-20">
+        
+        <!-- Overview -->
+        <section>
+          <h2 class="text-3xl font-bold mb-8 flex items-center">
+            <span class="w-8 h-1 bg-primary mr-4"></span> Trip Overview
+          </h2>
+          <p class="text-gray-400 text-lg leading-relaxed mb-8">
+            {{ trip.description }}
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div *ngFor="let highlight of trip.itinerary" class="flex items-start space-x-3 p-4 bg-[#111111] border border-white/5 rounded-xl">
+              <span class="text-primary mt-1">✓</span>
+              <span class="text-sm font-medium">{{ highlight.details }}</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services Included -->
+        <section class="bg-[#0a0a0a] p-10 rounded-3xl border border-white/5">
+          <h2 class="text-2xl font-bold mb-10">Services Included</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest text-primary font-bold block mb-2">Accommodation</span>
+              <p class="text-gray-300 font-medium">{{ trip.services.hotel }}</p>
+            </div>
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest text-primary font-bold block mb-2">Meals</span>
+              <ul class="text-gray-300 space-y-1">
+                <li *ngFor="let item of trip.services.food" class="flex items-center space-x-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest text-primary font-bold block mb-2">Transport</span>
+              <p class="text-gray-300">{{ trip.services.transport }}</p>
+            </div>
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest text-primary font-bold block mb-2">Guided Tour</span>
+              <p class="text-gray-300">{{ trip.services.guide }}</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Itinerary -->
+        <section>
+          <h2 class="text-3xl font-bold mb-12 flex items-center">
+            <span class="w-8 h-1 bg-primary mr-4"></span> Professional Itinerary
+          </h2>
+          <div class="space-y-4">
+            <div *ngFor="let item of trip.itinerary; let i = index" 
+                 class="group bg-[#111111] hover:bg-[#151515] p-8 rounded-2xl border border-white/5 transition-all duration-300 hover:border-primary/20">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-primary font-black text-xl">{{ item.day }}</span>
+                <span class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-xs text-gray-500 group-hover:border-primary/40 transition-colors">
+                  0{{ i + 1 }}
+                </span>
+              </div>
+              <p class="text-gray-300 leading-relaxed font-medium">
+                {{ item.details }}
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Booking Card -->
+      <div class="lg:col-span-1">
+        <div class="sticky top-32 bg-[#111111] border border-primary/20 p-8 rounded-3xl shadow-2xl shadow-primary/5">
+          <h3 class="text-xl font-bold mb-8">Plan Your Trip</h3>
+          
+          <!-- Duration Selection -->
+          <div class="space-y-6 mb-10">
+            <label class="text-xs uppercase tracking-widest text-gray-500 font-bold block">Select Duration</label>
+            <div class="grid grid-cols-1 gap-3">
+              <button *ngFor="let duration of trip.durations" 
+                      (click)="selectDuration(duration)"
+                      class="flex justify-between items-center p-4 rounded-xl border text-sm transition-all text-left"
+                      [ngClass]="selectedDuration?.type === duration.type ? 'bg-primary border-primary text-black font-bold' : 'bg-black/40 border-white/5 text-gray-400 hover:border-primary/30'">
+                <span>{{ duration.type }}</span>
+                <span *ngIf="selectedDuration?.type === duration.type" class="text-xs">Selected</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Price Display -->
+          <div class="border-t border-white/10 pt-8 mb-10">
+            <div class="flex justify-between items-end mb-2">
+              <span class="text-sm text-gray-400">Total Price <span class="text-[10px] block">(Per Head)</span></span>
+              <div class="text-right">
+                <span class="block text-4xl font-black text-white">₹{{ selectedDuration?.price }}</span>
+              </div>
+            </div>
+            <p class="text-[10px] text-gray-500 text-right">*Taxes and fees included</p>
+          </div>
+
+          <!-- Book Now Button -->
+          <button class="w-full py-5 bg-primary text-black font-black text-lg rounded-xl hover:bg-white transition-all transform hover:scale-[1.02] shadow-xl shadow-primary/20 mb-6 uppercase tracking-widest">
+            Book This Trip
+          </button>
+          
+          <!-- Help Text -->
+          <p class="text-center text-xs text-gray-500 font-medium">
+            Need help? <a routerLink="/contact" class="text-primary hover:underline">Chat with an expert</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

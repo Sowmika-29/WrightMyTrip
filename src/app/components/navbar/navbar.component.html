@@ -1,0 +1,51 @@
+<nav class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-primary/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 cursor-pointer" routerLink="/">
+        <h1 class="text-2xl font-bold tracking-tighter">
+          WRIGHT <span class="text-primary italic">MY</span> TRIP
+        </h1>
+      </div>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a routerLink="/home" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
+        <a routerLink="/domestic" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Travel Booking</a>
+        <a routerLink="/visa" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Visa</a>
+        <a routerLink="/contact" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+        <a routerLink="/contact" fragment="trips" class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105">
+          BOOK NOW
+        </a>
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="hidden md:flex items-center space-x-4">
+        <button routerLink="/login" class="text-sm font-medium hover:text-primary underline underline-offset-4">Login</button>
+        <button routerLink="/signup" class="px-4 py-1.5 border border-primary text-primary text-sm font-medium rounded hover:bg-primary/10 transition-colors">Sign Up</button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button (click)="toggleMenu()" class="text-white hover:text-primary focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path *ngIf="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            <path *ngIf="isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="isMenuOpen" class="md:hidden bg-black/95 border-b border-primary/20 py-4 px-4 space-y-4 animate-in slide-in-from-top duration-300">
+    <a routerLink="/home" (click)="toggleMenu()" class="block text-lg font-medium">Home</a>
+    <a routerLink="/domestic" (click)="toggleMenu()" class="block text-lg font-medium">Travel Booking</a>
+    <a routerLink="/visa" (click)="toggleMenu()" class="block text-lg font-medium">Visa</a>
+    <a routerLink="/contact" (click)="toggleMenu()" class="block text-lg font-medium">Contact</a>
+    <div class="pt-4 flex flex-col space-y-4">
+      <button routerLink="/login" (click)="toggleMenu()" class="w-full py-3 text-center border border-white/20 rounded">Login</button>
+      <button routerLink="/signup" (click)="toggleMenu()" class="w-full py-3 text-center bg-primary text-black font-bold rounded">Sign Up</button>
+    </div>
+  </div>
+</nav>
