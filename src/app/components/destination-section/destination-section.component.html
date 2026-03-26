@@ -1,0 +1,25 @@
+<section class="py-24 bg-black">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+      <div class="space-y-4">
+        <h2 class="text-4xl font-black tracking-tight uppercase">
+          {{ title }} <span class="text-primary italic">{{ subtitle }}</span>
+        </h2>
+        <p class="text-gray-400 max-w-xl text-lg">Curated destinations for your next unforgettable journey.</p>
+      </div>
+      <a [routerLink]="viewAllLink" class="px-8 py-3 border border-primary/20 text-primary font-bold rounded-full hover:bg-primary hover:text-black transition-all hidden md:flex items-center space-x-2">
+        <span>VIEW ALL DESTINATIONS</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <app-trip-card *ngFor="let trip of trips" [trip]="trip"></app-trip-card>
+    </div>
+    
+    <!-- Mobile View All -->
+    <div class="mt-10 md:hidden">
+      <button [routerLink]="viewAllLink" class="w-full py-4 border border-primary/20 text-primary font-bold rounded-xl uppercase">View All</button>
+    </div>
+  </div>
+</section>

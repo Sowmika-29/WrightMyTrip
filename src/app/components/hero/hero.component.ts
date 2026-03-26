@@ -45,7 +45,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   startAutoSlide() {
     this.intervalId = setInterval(() => {
       this.nextSlide();
-    }, 4000);
+    }, 3000);
   }
 
   stopAutoSlide() {

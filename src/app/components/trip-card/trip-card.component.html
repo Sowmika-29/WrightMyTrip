@@ -6,10 +6,20 @@
     <img [src]="trip.image" [alt]="trip.name" 
          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
     
+    <!-- Badges -->
+    <div class="absolute top-4 left-4 flex flex-col space-y-2 z-10">
+      <div class="bg-primary text-black px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter w-fit">
+        {{ trip.durationDays }} Days
+      </div>
+      <div class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter w-fit border border-white/10">
+        {{ trip.type }}
+      </div>
+    </div>
+
     <!-- Price Badge -->
-    <div class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-primary/30 z-10 transition-transform group-hover:scale-105">
-      <span class="text-xs text-gray-400 block leading-none">Starting at</span>
-      <span class="text-primary font-bold text-lg">₹{{ startingPrice }}</span>
+    <div class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2 rounded-2xl border border-primary/30 z-10 transition-all group-hover:bg-primary group-hover:text-black">
+      <span class="text-[8px] uppercase block leading-none font-bold opacity-60">Starting at</span>
+      <span class="font-black text-lg">₹{{ startingPrice | number }}</span>
     </div>
 
     <!-- Hover Overlay -->

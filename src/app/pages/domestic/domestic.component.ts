@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TripCardComponent } from '../../components/trip-card/trip-card.component';
+import { RouterModule } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { Trip } from '../../models/trip.model';
+import { DestinationGridComponent } from '../../components/destination-grid/destination-grid.component';
 
 @Component({
   selector: 'app-domestic',
   standalone: true,
-  imports: [CommonModule, TripCardComponent],
+  imports: [CommonModule, RouterModule, DestinationGridComponent],
   templateUrl: './domestic.component.html',
   styleUrls: ['./domestic.component.css']
 })
@@ -17,8 +18,9 @@ export class DomesticComponent implements OnInit {
   constructor(private tripService: TripService) {}
 
   ngOnInit() {
-    this.tripService.getTripsByType('domestic').subscribe(trips => {
-      this.trips = trips;
+    this.tripService.getTrips().subscribe(allTrips => {
+      this.trips = allTrips.filter(t => t.type === 'domestic');
     });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

@@ -1,33 +1,43 @@
-<nav class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-primary/20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-primary/20">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <!-- Logo -->
-      <div class="flex-shrink-0 cursor-pointer" routerLink="/">
-        <h1 class="text-2xl font-bold tracking-tighter">
-          WRIGHT <span class="text-primary italic">MY</span> TRIP
+      
+      <!-- Left: Brand Logo + Text -->
+      <div class="flex items-center space-x-1 cursor-pointer group" routerLink="/">
+        <div class="w-14 h-14 flex items-center justify-center p-0 transition-all overflow-visible">
+          <img src="logo-refined.png" alt="Wright My Trip" class="w-full h-full object-contain scale-110">
+        </div>
+        <h1 class="text-2xl lg:text-3xl font-black tracking-[0.05em] uppercase whitespace-nowrap text-primary group-hover:drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">
+          WRIGHT MY TRIP
         </h1>
       </div>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a routerLink="/home" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
-        <a routerLink="/domestic" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Travel Booking</a>
-        <a routerLink="/visa" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Visa</a>
-        <a routerLink="/contact" routerLinkActive="text-primary" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-        <a routerLink="/contact" fragment="trips" class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105">
-          BOOK NOW
-        </a>
+      <!-- Center: Navigation Menu -->
+      <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        <a (click)="scrollToSection('home')" [class.active-link]="activeSection === 'home'" class="nav-link">Home</a>
+        <a (click)="scrollToSection('trips')" [class.active-link]="activeSection === 'trips' && !isCustomizeActive" class="nav-link">Tours</a>
+        <a (click)="scrollToSection('trips'); isCustomizeActive = true" [class.active-link]="activeSection === 'trips' && isCustomizeActive" class="nav-link">Customize Tour</a>
+        <a (click)="scrollToSection('contact'); isVisaActive = true; isCustomizeActive = false" [class.active-link]="activeSection === 'contact' && isVisaActive" class="nav-link">Visa</a>
+        <a routerLink="/blog" routerLinkActive="active-link" class="nav-link">Blog</a>
+        <a routerLink="/faqs" routerLinkActive="active-link" class="nav-link">FAQs</a>
+        <a (click)="scrollToSection('contact'); isVisaActive = false" [class.active-link]="activeSection === 'contact' && !isVisaActive" class="nav-link">Contact</a>
       </div>
 
-      <!-- Auth Buttons -->
-      <div class="hidden md:flex items-center space-x-4">
-        <button routerLink="/login" class="text-sm font-medium hover:text-primary underline underline-offset-4">Login</button>
-        <button routerLink="/signup" class="px-4 py-1.5 border border-primary text-primary text-sm font-medium rounded hover:bg-primary/10 transition-colors">Sign Up</button>
+      <!-- Right: Auth + CTA -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <div class="flex items-center space-x-2 mr-4">
+          <button routerLink="/login" class="text-sm font-medium hover:text-primary transition-colors">Login</button>
+          <span class="text-white/20">|</span>
+          <button routerLink="/signup" class="text-sm font-medium hover:text-primary transition-colors">Signup</button>
+        </div>
+        <button routerLink="/contact" fragment="trips" class="px-6 py-2.5 bg-primary text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-lg shadow-primary/20 text-sm">
+          BOOK NOW
+        </button>
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="md:hidden flex items-center">
-        <button (click)="toggleMenu()" class="text-white hover:text-primary focus:outline-none">
+      <div class="lg:hidden flex items-center">
+        <button (click)="toggleMenu()" class="text-white hover:text-primary focus:outline-none p-2 rounded-lg bg-white/5 border border-white/10">
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path *ngIf="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             <path *ngIf="isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -37,15 +47,28 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div *ngIf="isMenuOpen" class="md:hidden bg-black/95 border-b border-primary/20 py-4 px-4 space-y-4 animate-in slide-in-from-top duration-300">
-    <a routerLink="/home" (click)="toggleMenu()" class="block text-lg font-medium">Home</a>
-    <a routerLink="/domestic" (click)="toggleMenu()" class="block text-lg font-medium">Travel Booking</a>
-    <a routerLink="/visa" (click)="toggleMenu()" class="block text-lg font-medium">Visa</a>
-    <a routerLink="/contact" (click)="toggleMenu()" class="block text-lg font-medium">Contact</a>
-    <div class="pt-4 flex flex-col space-y-4">
-      <button routerLink="/login" (click)="toggleMenu()" class="w-full py-3 text-center border border-white/20 rounded">Login</button>
-      <button routerLink="/signup" (click)="toggleMenu()" class="w-full py-3 text-center bg-primary text-black font-bold rounded">Sign Up</button>
+  <!-- Mobile Menu Overflow -->
+  <div *ngIf="isMenuOpen" class="lg:hidden bg-black/98 border-t border-primary/10 py-6 px-6 space-y-5 animate-in slide-in-from-top duration-300">
+    <div class="flex flex-col space-y-4">
+      <a (click)="scrollToSection('home')" [class.mobile-active]="activeSection === 'home'" class="mobile-nav-link">Home</a>
+      <a (click)="scrollToSection('trips'); isCustomizeActive = false" [class.mobile-active]="activeSection === 'trips' && !isCustomizeActive" class="mobile-nav-link">Tours</a>
+      <a (click)="scrollToSection('trips'); isCustomizeActive = true" [class.mobile-active]="activeSection === 'trips' && isCustomizeActive" class="mobile-nav-link">Customize Tour</a>
+      <a (click)="scrollToSection('contact'); isVisaActive = true; isCustomizeActive = false" [class.mobile-active]="activeSection === 'contact' && isVisaActive" class="mobile-nav-link">Visa</a>
+      <a routerLink="/blog" (click)="toggleMenu()" routerLinkActive="mobile-active" class="mobile-nav-link">Blog</a>
+      <a routerLink="/faqs" (click)="toggleMenu()" routerLinkActive="mobile-active" class="mobile-nav-link">FAQs</a>
+      <a (click)="scrollToSection('contact'); isVisaActive = false" [class.mobile-active]="activeSection === 'contact' && !isVisaActive" class="mobile-nav-link">Contact</a>
+    </div>
+    
+    <hr class="border-white/5">
+    
+    <div class="flex flex-col space-y-3">
+      <div class="flex space-x-4 mb-2">
+        <button routerLink="/login" (click)="toggleMenu()" class="flex-1 py-3 text-center border border-white/20 rounded-xl hover:bg-white/5">Login</button>
+        <button routerLink="/signup" (click)="toggleMenu()" class="flex-1 py-3 text-center border border-white/20 rounded-xl hover:bg-white/5">Signup</button>
+      </div>
+      <button routerLink="/contact" (click)="toggleMenu()" class="w-full py-4 text-center bg-primary text-black font-bold rounded-xl shadow-xl shadow-primary/10">
+        BOOK NOW
+      </button>
     </div>
   </div>
 </nav>

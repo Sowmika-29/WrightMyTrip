@@ -25,4 +25,6 @@ export interface Trip {
   durations: TripDuration[];
   services: TripServices;
   itinerary: ItineraryDay[];
+  categories: string[];
+  durationDays: number;
 }

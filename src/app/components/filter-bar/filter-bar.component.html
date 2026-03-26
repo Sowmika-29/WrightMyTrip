@@ -1,0 +1,61 @@
+<div class="glass rounded-3xl p-6 md:p-8 w-full max-w-7xl mx-auto -mt-16 relative z-40 shadow-2xl">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 overflow-visible">
+    
+    <!-- Search -->
+    <div class="flex flex-col space-y-2">
+      <label class="text-xs uppercase tracking-widest text-primary font-bold ml-1">Search Destination</label>
+      <div class="relative group">
+        <input 
+          type="text" 
+          [(ngModel)]="filters.search" 
+          (input)="onFilterChange()"
+          placeholder="Where to?" 
+          class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all placeholder:text-gray-600">
+        <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Category -->
+    <div class="lg:col-span-2 flex flex-col space-y-2">
+      <label class="text-xs uppercase tracking-widest text-primary font-bold ml-1">Categories</label>
+      <div class="flex flex-wrap gap-2">
+        <button 
+          *ngFor="let cat of categories" 
+          (click)="setCategory(cat)"
+          [ngClass]="filters.category === cat ? 'bg-primary text-black border-primary' : 'bg-white/5 text-white/70 border-white/10 hover:border-white/30'"
+          class="px-4 py-2 rounded-full border text-xs font-semibold transition-all whitespace-nowrap">
+          {{ cat }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Budget & Reset -->
+    <div class="flex flex-col space-y-2">
+      <div class="flex justify-between items-center">
+        <label class="text-xs uppercase tracking-widest text-primary font-bold ml-1">Budget (Up to ₹{{filters.maxPrice | number}})</label>
+        <button (click)="resetFilters()" class="text-[10px] uppercase font-bold text-white/40 hover:text-primary transition-colors">Reset</button>
+      </div>
+      <input 
+        type="range" 
+        min="1000" 
+        max="150000" 
+        step="1000" 
+        [(ngModel)]="filters.maxPrice" 
+        (change)="onFilterChange()"
+        class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary">
+      
+      <div class="mt-4 flex flex-col space-y-2">
+        <label class="text-xs uppercase tracking-widest text-primary font-bold ml-1">Duration</label>
+        <select 
+          [(ngModel)]="filters.durationRange" 
+          (change)="onFilterChange()"
+          class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-primary transition-all">
+          <option *ngFor="let dur of durations" [value]="dur.value" class="bg-black text-white">{{ dur.label }}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+</div>

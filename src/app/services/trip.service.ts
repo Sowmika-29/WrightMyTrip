@@ -31,7 +31,9 @@ export class TripService {
         { day: 'Day 2', details: 'Full-day backwater tour in Alleppey houseboat with traditional food.' },
         { day: 'Day 3', details: 'Munnar tea garden visit and Eravikulam National Park tour.' },
         { day: 'Day 4', details: 'Checkout from hotel and drop at airport/railway station.' }
-      ]
+      ],
+      categories: ['Domestic', 'Family Trips', 'Honeymoon'],
+      durationDays: 4
     },
     {
       id: 'ooty',
@@ -53,7 +55,9 @@ export class TripService {
       itinerary: [
         { day: 'Day 1', details: 'Arrival, Botanical Garden and Ooty Lake.' },
         { day: 'Day 2', details: 'Doddabetta Peak and Tea Factory visit.' }
-      ]
+      ],
+      categories: ['Domestic', 'Honeymoon', 'Friends Trips'],
+      durationDays: 3
     },
     {
       id: 'dubai',
@@ -76,7 +80,9 @@ export class TripService {
         { day: 'Day 1', details: 'Arrival, Burj Khalifa at the Top and Dubai Mall.' },
         { day: 'Day 2', details: 'Desert Safari with BBQ Dinner and Belly Dance.' },
         { day: 'Day 3', details: 'Palm Jumeirah and Atlantis visit.' }
-      ]
+      ],
+      categories: ['International', 'Family Trips', 'Corporate'],
+      durationDays: 5
     },
     {
       id: 'switzerland',
@@ -99,7 +105,9 @@ export class TripService {
         { day: 'Day 1', details: 'Arrival in Zurich, transfer to Lucerne.' },
         { day: 'Day 2', details: 'Mount Titlis excursion with Ice Flyer.' },
         { day: 'Day 3', details: 'Interlaken and Lake Brienz cruise.' }
-      ]
+      ],
+      categories: ['International', 'Honeymoon', 'Senior Citizen'],
+      durationDays: 7
     },
     {
       id: 'goa',
@@ -110,7 +118,9 @@ export class TripService {
       description: 'Relax on pristine beaches and explore lively nightlife.',
       durations: [{ type: '3 Days / 2 Nights', price: 7000 }],
       services: { hotel: '3-star resort', food: ['Breakfast'], transport: 'Bike/Car Rental', guide: 'Optional' },
-      itinerary: [{ day: 'Day 1', details: 'Check-in and North Goa beach tour.' }]
+      itinerary: [{ day: 'Day 1', details: 'Check-in and North Goa beach tour.' }],
+      categories: ['Domestic', 'Friends Trips', 'Group Trip'],
+      durationDays: 3
     },
     {
       id: 'manali',
@@ -121,7 +131,9 @@ export class TripService {
       description: 'Snow-capped mountains and river rafting adventures.',
       durations: [{ type: '4 Days / 3 Nights', price: 9000 }],
       services: { hotel: 'Luxury Stay', food: ['All meals'], transport: 'Private Cab', guide: 'Included' },
-      itinerary: [{ day: 'Day 1', details: 'Arrival and mall road visit.' }]
+      itinerary: [{ day: 'Day 1', details: 'Arrival and mall road visit.' }],
+      categories: ['Domestic', 'Honeymoon', 'Friends Trips'],
+      durationDays: 4
     },
     {
       id: 'singapore',
@@ -132,7 +144,9 @@ export class TripService {
       description: 'Futuristic gardens and diverse cultural districts.',
       durations: [{ type: '4 Days / 3 Nights', price: 45000 }],
       services: { hotel: '4-star City Hotel', food: ['Breakfast'], transport: 'Private transfers', guide: 'English speaking' },
-      itinerary: [{ day: 'Day 1', details: 'Arrival and Night Safari.' }]
+      itinerary: [{ day: 'Day 1', details: 'Arrival and Night Safari.' }],
+      categories: ['International', 'Family Trips', 'Group Trip'],
+      durationDays: 4
     },
     {
       id: 'bali',
@@ -143,7 +157,9 @@ export class TripService {
       description: 'Spiritual temples and stunning tropical landscapes.',
       durations: [{ type: '5 Days / 4 Nights', price: 50000 }],
       services: { hotel: 'Private Villa', food: ['Breakfast', 'Special Dinner'], transport: 'Private driver', guide: 'Local guide' },
-      itinerary: [{ day: 'Day 1', details: 'Arrival and relaxation.' }]
+      itinerary: [{ day: 'Day 1', details: 'Arrival and relaxation.' }],
+      categories: ['International', 'Honeymoon', 'Family Trips'],
+      durationDays: 5
     },
     {
       id: 'rajasthan',
@@ -154,7 +170,9 @@ export class TripService {
       description: 'Majestic forts, royal palaces, and vibrant desert culture.',
       durations: [{ type: '5 Days / 4 Nights', price: 15000 }],
       services: { hotel: 'Palace Heritage Hotel', food: ['Traditional Thali included'], transport: 'Private AC Cab', guide: 'Local historian' },
-      itinerary: [{ day: 'Day 1', details: 'Arrival in Jaipur, Hawa Mahal and City Palace visit.' }]
+      itinerary: [{ day: 'Day 1', details: 'Arrival in Jaipur, Hawa Mahal and City Palace visit.' }],
+      categories: ['Domestic', 'Family Trips', 'Senior Citizen'],
+      durationDays: 5
     },
     {
       id: 'ladakh',
@@ -165,7 +183,9 @@ export class TripService {
       description: 'Stunning mountain landscapes, crystal clear lakes and ancient monasteries.',
       durations: [{ type: '6 Days / 5 Nights', price: 25000 }],
       services: { hotel: 'Eco-Resort Stay', food: ['Organic Meals'], transport: '4x4 SUV', guide: 'Ladakhi Guide' },
-      itinerary: [{ day: 'Day 1', details: 'Leh arrival and acclimatization.' }]
+      itinerary: [{ day: 'Day 1', details: 'Leh arrival and acclimatization.' }],
+      categories: ['Domestic', 'Friends Trips', 'Group Trip'],
+      durationDays: 6
     },
     {
       id: 'maldives',
@@ -176,7 +196,9 @@ export class TripService {
       description: 'Crystal blue waters, white sand beaches, and overwater villas.',
       durations: [{ type: '4 Days / 3 Nights', price: 75000 }],
       services: { hotel: 'Overwater Villa', food: ['All-inclusive'], transport: 'Speedboat transfers', guide: 'Not needed' },
-      itinerary: [{ day: 'Day 1', details: 'Arrival at Male and speedboat transfer to resort.' }]
+      itinerary: [{ day: 'Day 1', details: 'Arrival at Male and speedboat transfer to resort.' }],
+      categories: ['International', 'Honeymoon', 'Family Trips'],
+      durationDays: 4
     },
     {
       id: 'paris',
@@ -187,7 +209,9 @@ export class TripService {
       description: 'Iconic landmarks, world-class art, and romantic cafe culture.',
       durations: [{ type: '4 Days / 3 Nights', price: 95000 }],
       services: { hotel: 'Boutique Hotel in Le Marais', food: ['Breakfast & Dinner'], transport: 'Paris Pass included', guide: 'Audio guide for Louvre' },
-      itinerary: [{ day: 'Day 1', details: 'Eiffel Tower and Seine River Cruise.' }]
+      itinerary: [{ day: 'Day 1', details: 'Eiffel Tower and Seine River Cruise.' }],
+      categories: ['International', 'Honeymoon', 'Corporate'],
+      durationDays: 4
     }
     // More trips can be added as needed based on logic
   ];
