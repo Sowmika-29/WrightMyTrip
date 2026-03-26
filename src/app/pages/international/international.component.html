@@ -1,30 +1,33 @@
-<div class="min-h-screen bg-black pt-32 pb-24">
+<app-navbar></app-navbar>
+
+<main class="pt-32 pb-24 bg-black min-h-screen">
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row justify-between items-center mb-16 space-y-8 md:space-y-0 text-center md:text-left">
-      <div class="space-y-4">
-        <div class="flex items-center space-x-4 justify-center md:justify-start">
-          <a routerLink="/" class="text-primary hover:text-white transition-colors flex items-center space-x-2 text-sm font-bold uppercase tracking-widest group">
-            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-            <span>Back to Home</span>
-          </a>
-        </div>
-        <h1 class="text-6xl font-black uppercase tracking-tighter">
-          International <span class="text-primary italic">Escapes</span>
-        </h1>
-        <p class="text-gray-400 text-xl max-w-2xl font-medium">Discover breathtaking destinations around the globe with our expert planning.</p>
-      </div>
+    <!-- Back Button -->
+    <div class="mb-12">
+      <a routerLink="/" class="text-primary hover:text-white transition-colors flex items-center space-x-2 text-sm font-bold uppercase tracking-widest group w-fit">
+        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span>Back to Home</span>
+      </a>
+    </div>
 
-      <!-- Result Count Badge -->
-      <div class="bg-primary/10 border border-primary/20 px-8 py-4 rounded-3xl">
-        <span class="text-primary text-4xl font-black mr-2">{{ trips.length }}</span>
-        <span class="text-gray-400 uppercase font-bold tracking-widest text-sm">Global Destinations</span>
-      </div>
+    <!-- Header -->
+    <div class="text-center mb-16 space-y-4">
+      <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter">
+        International <span class="text-primary italic">Escapes</span>
+      </h1>
+      <p class="text-gray-400 text-xl font-medium max-w-2xl mx-auto">
+        Discover top global destinations
+      </p>
     </div>
 
     <!-- Grid -->
-    <app-destination-grid [trips]="trips"></app-destination-grid>
-
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <app-trip-card *ngFor="let trip of trips" [trip]="trip"></app-trip-card>
+    </div>
   </div>
-</div>
+</main>
+
+<app-footer></app-footer>

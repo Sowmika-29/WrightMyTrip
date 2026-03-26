@@ -6,6 +6,7 @@ import { TripDetailsComponent } from './pages/trip-details/trip-details.componen
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ExploreDestinationsComponent } from './pages/explore-destinations/explore-destinations.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'explore-destinations', component: ExploreDestinationsComponent },
   { path: '**', redirectTo: 'home' }
 ];

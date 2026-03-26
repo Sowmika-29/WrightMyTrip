@@ -15,8 +15,8 @@
       <!-- Center: Navigation Menu -->
       <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
         <a (click)="scrollToSection('home')" [class.active-link]="activeSection === 'home'" class="nav-link">Home</a>
-        <a (click)="scrollToSection('trips')" [class.active-link]="activeSection === 'trips' && !isCustomizeActive" class="nav-link">Tours</a>
-        <a (click)="scrollToSection('trips'); isCustomizeActive = true" [class.active-link]="activeSection === 'trips' && isCustomizeActive" class="nav-link">Customize Tour</a>
+        <a routerLink="/explore-destinations" routerLinkActive="active-link" class="nav-link">Tours</a>
+        <a routerLink="/explore-destinations" routerLinkActive="active-link" class="nav-link">Customize Tour</a>
         <a (click)="scrollToSection('contact'); isVisaActive = true; isCustomizeActive = false" [class.active-link]="activeSection === 'contact' && isVisaActive" class="nav-link">Visa</a>
         <a routerLink="/blog" routerLinkActive="active-link" class="nav-link">Blog</a>
         <a routerLink="/faqs" routerLinkActive="active-link" class="nav-link">FAQs</a>
@@ -51,8 +51,8 @@
   <div *ngIf="isMenuOpen" class="lg:hidden bg-black/98 border-t border-primary/10 py-6 px-6 space-y-5 animate-in slide-in-from-top duration-300">
     <div class="flex flex-col space-y-4">
       <a (click)="scrollToSection('home')" [class.mobile-active]="activeSection === 'home'" class="mobile-nav-link">Home</a>
-      <a (click)="scrollToSection('trips'); isCustomizeActive = false" [class.mobile-active]="activeSection === 'trips' && !isCustomizeActive" class="mobile-nav-link">Tours</a>
-      <a (click)="scrollToSection('trips'); isCustomizeActive = true" [class.mobile-active]="activeSection === 'trips' && isCustomizeActive" class="mobile-nav-link">Customize Tour</a>
+      <a routerLink="/explore-destinations" (click)="toggleMenu()" routerLinkActive="mobile-active" class="mobile-nav-link">Tours</a>
+      <a routerLink="/explore-destinations" (click)="toggleMenu()" routerLinkActive="mobile-active" class="mobile-nav-link">Customize Tour</a>
       <a (click)="scrollToSection('contact'); isVisaActive = true; isCustomizeActive = false" [class.mobile-active]="activeSection === 'contact' && isVisaActive" class="mobile-nav-link">Visa</a>
       <a routerLink="/blog" (click)="toggleMenu()" routerLinkActive="mobile-active" class="mobile-nav-link">Blog</a>
       <a routerLink="/faqs" (click)="toggleMenu()" routerLinkActive="mobile-active" class="mobile-nav-link">FAQs</a>

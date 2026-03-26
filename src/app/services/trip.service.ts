@@ -13,7 +13,7 @@ export class TripService {
       type: 'domestic',
       image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=80&w=1200',
       tagline: 'God’s Own Country',
-      description: 'Explore backwaters, greenery and beaches. Experience the tranquility of the Alleppey backwaters and the lush green hills of Munnar.',
+      description: 'Explore backwaters, greenery and beaches.',
       durations: [
         { type: '1 Day Trip', price: 3000 },
         { type: '2 Days / 1 Night', price: 5000 },
@@ -65,7 +65,7 @@ export class TripService {
       type: 'international',
       image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200',
       tagline: 'The City of Gold',
-      description: 'Luxury shopping, ultramodern architecture and a lively nightlife scene.',
+      description: 'Luxury shopping and a lively nightlife scene.',
       durations: [
         { type: '3 Days / 2 Nights', price: 35000 },
         { type: '5 Days / 4 Nights', price: 55000 }
